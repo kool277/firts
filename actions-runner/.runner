@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 2,
+  "agentName": "DESKTOP-I6607GQ",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus12.actions.githubusercontent.com/xNiOfOdWVKgwaZ6ludZOBhuFULARm4vY2ZjT14BYW1BaFeBdbS/",
+  "gitHubUrl": "https://github.com/kool277/firts",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
