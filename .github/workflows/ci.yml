@@ -80,9 +80,10 @@ jobs:
   # has no execution policy, and Docker CLI works perfectly inside it.
   # GitHub Actions ${{ }} expressions are resolved before the shell sees them,
   # so no cmd-specific variable syntax is needed.
+  # Note: this job requires a local self-hosted runner registered in GitHub
   deploy:
     name: Deploy to Local PC
-    runs-on: self-hosted
+    runs-on: [self-hosted, windows]
     needs: docker
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment: local-dev

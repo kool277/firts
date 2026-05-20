@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "kool277/firts",
+  "pipelineDirectory": "firts",
+  "workspaceDirectory": "firts\\firts",
+  "repositories": {
+    "kool277/firts": {
+      "repositoryPath": "firts\\firts",
+      "lastRunOn": "05/20/2026 20:59:14 +05:00"
+    }
+  },
+  "lastRunOn": "05/20/2026 20:59:14 +05:00"
+}

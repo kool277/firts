@@ -1,0 +1,2855 @@
+[2026-05-20 15:59:14Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'Credentials': 'C:\docker-dii\firts\actions-runner\.credentials'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'Runner': 'C:\docker-dii\firts\actions-runner\.runner'
+[2026-05-20 15:59:14Z INFO Worker] Version: 2.334.0
+[2026-05-20 15:59:14Z INFO Worker] Commit: f1995ede5d885c997d13d8eca5467c4ce97fe69c
+[2026-05-20 15:59:14Z INFO Worker] Culture: en-US
+[2026-05-20 15:59:14Z INFO Worker] UI Culture: en-US
+[2026-05-20 15:59:14Z INFO Worker] Waiting to receive the job message from the channel.
+[2026-05-20 15:59:14Z INFO ProcessChannel] Receiving message of length 22238, with hash 'a115eafc06f1c8610b7e6aa856162415156b50758fc0d6d226378208f9dd9d07'
+[2026-05-20 15:59:14Z INFO Worker] Message received.
+[2026-05-20 15:59:14Z INFO Worker] Job message:
+ {
+  "environmentVariables": [
+    {
+      "type": 2,
+      "file": 1,
+      "line": 10,
+      "col": 3,
+      "map": [
+        {
+          "key": {
+            "type": 0,
+            "file": 1,
+            "line": 10,
+            "col": 3,
+            "lit": "IMAGE_NAME"
+          },
+          "value": {
+            "type": 3,
+            "file": 1,
+            "line": 10,
+            "col": 15,
+            "expr": "format('{0}/flask-demo', secrets.DOCKERHUB_USERNAME)"
+          }
+        }
+      ]
+    }
+  ],
+  "fileTable": [
+    ".github/workflows/ci.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "docker/login-action",
+        "ref": "v3",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 91,
+        "col": 15,
+        "lit": "Log in to Docker Hub"
+      },
+      "contextName": "__docker_login-action",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 94,
+        "col": 11,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 94,
+              "col": 11,
+              "lit": "username"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 94,
+              "col": 21,
+              "expr": "secrets.DOCKERHUB_USERNAME"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 95,
+              "col": 11,
+              "lit": "password"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 95,
+              "col": 21,
+              "expr": "secrets.DOCKERHUB_TOKEN"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "53617ff6-31da-4eaf-8428-df7e950a1ddb",
+      "name": "__docker_login-action"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 97,
+        "col": 15,
+        "lit": "Stop and remove existing container"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 99,
+              "col": 14,
+              "lit": "docker rm -f flask-demo"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 98,
+              "col": 16,
+              "lit": "cmd"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "continueOnError": {
+        "type": 5,
+        "file": 1,
+        "line": 100,
+        "col": 28,
+        "bool": true
+      },
+      "id": "d65db540-9c90-416f-b8ce-5c6e7ab6f6b1",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 102,
+        "col": 15,
+        "lit": "Pull image from Docker Hub"
+      },
+      "contextName": "__run_2",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 104,
+              "col": 14,
+              "expr": "format('docker pull {0}:{1}', env.IMAGE_NAME, github.sha)"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 103,
+              "col": 16,
+              "lit": "cmd"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c",
+      "name": "__run_2"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 106,
+        "col": 15,
+        "lit": "Run new container"
+      },
+      "contextName": "__run_3",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 108,
+              "col": 14,
+              "expr": "format('docker run -d --name flask-demo --restart unless-stopped -p 8080:8080 {0}:{1}', env.IMAGE_NAME, github.sha)"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 107,
+              "col": 16,
+              "lit": "cmd"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "cab34ad3-5296-477f-bb04-a8daeda103ca",
+      "name": "__run_3"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 110,
+        "col": 15,
+        "lit": "Health check"
+      },
+      "contextName": "__run_4",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 112,
+              "col": 14,
+              "lit": "ping 127.0.0.1 -n 4 > nul\ncurl -f http://localhost:8080/health\necho Deploy successful\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 111,
+              "col": 16,
+              "lit": "cmd"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "827aa6bf-f36f-4304-96a3-672daaec97b8",
+      "name": "__run_4"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DOCKERHUB_TOKEN": {
+      "value": "***",
+      "isSecret": true
+    },
+    "DOCKERHUB_USERNAME": {
+      "value": "***",
+      "isSecret": true
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "actions.runner.requirenode24": {
+      "value": "false"
+    },
+    "actions.runner.usenode24bydefault": {
+      "value": "false"
+    },
+    "actions.runner.warnonnode20": {
+      "value": "true"
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "true"
+    },
+    "actions_batch_action_resolution": {
+      "value": "false"
+    },
+    "actions_container_action_runner_temp": {
+      "value": "true"
+    },
+    "actions_display_helpful_actions_download_errors": {
+      "value": "true"
+    },
+    "actions_runner_compare_workflow_parser": {
+      "value": "false"
+    },
+    "actions_runner_deprecate_linux_arm32": {
+      "value": "false"
+    },
+    "actions_runner_emit_composite_markers": {
+      "value": "false"
+    },
+    "actions_runner_kill_linux_arm32": {
+      "value": "false"
+    },
+    "actions_runner_node20_removal_date": {
+      "value": ""
+    },
+    "actions_runner_node24_default_date": {
+      "value": ""
+    },
+    "actions_service_container_command": {
+      "value": "true"
+    },
+    "actions_set_orchestration_id_env_for_actions": {
+      "value": "true"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_snapshot_preflight_hosted_runner_check": {
+      "value": "false"
+    },
+    "actions_snapshot_preflight_image_gen_pool_check": {
+      "value": "false"
+    },
+    "actions_use_bearer_token_for_codeload": {
+      "value": "false"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "deploy"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"read\",\"Metadata\":\"read\",\"Packages\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "9e298cae-2863-4449-8922-8477f9f0c1b4.deploy.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "Deploy to Local PC"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "9e298cae-2863-4449-8922-8477f9f0c1b4",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "9e298cae-2863-4449-8922-8477f9f0c1b4",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "abfa5a40-40bb-5acd-8a1c-6c5e69a41707",
+  "jobDisplayName": "Deploy to Local PC",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://artifactcache.actions.githubusercontent.com/xNiOfOdWVKgwaZ6ludZOBhuFULARm4vY2ZjT14BYW1BaFeBdbS/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus12.actions.githubusercontent.com/xNiOfOdWVKgwaZ6ludZOBhuFULARm4vY2ZjT14BYW1BaFeBdbS/",
+          "GenerateIdTokenUrl": "",
+          "ConnectivityChecks": "[\"https://broker.actions.githubusercontent.com/health\",\"https://token.actions.githubusercontent.com/ready\",\"https://run.actions.githubusercontent.com/health\"]"
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-2-azure-eastus.actions.githubusercontent.com/5/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "4a463931bf3d106f5b253d831235ee789ce292f0"
+        },
+        {
+          "k": "repository",
+          "v": "kool277/firts"
+        },
+        {
+          "k": "repository_owner",
+          "v": "kool277"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "214221688"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/kool277/firts.git"
+        },
+        {
+          "k": "run_id",
+          "v": "26174269157"
+        },
+        {
+          "k": "run_number",
+          "v": "6"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "214221688"
+        },
+        {
+          "k": "actor",
+          "v": "kool277"
+        },
+        {
+          "k": "workflow",
+          "v": "CI Pipeline"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "4a463931bf3d106f5b253d831235ee789ce292f0"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "f6be26d2d3a498c157848343de0cc40868eecf1c"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "qwertykool7@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "kool277"
+                              },
+                              {
+                                "k": "username",
+                                "v": "kool277"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "qwertykool7@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "kool277"
+                              },
+                              {
+                                "k": "username",
+                                "v": "kool277"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "4a463931bf3d106f5b253d831235ee789ce292f0"
+                        },
+                        {
+                          "k": "message",
+                          "v": "docker local hosting"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2026-05-20T20:57:34+05:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "2900647c5f1bbb21a17b10247c2f88cc0881f89d"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/kool277/firts/commit/4a463931bf3d106f5b253d831235ee789ce292f0"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/kool277/firts/compare/f6be26d2d3a4...4a463931bf3d"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "qwertykool7@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "kool277"
+                          },
+                          {
+                            "k": "username",
+                            "v": "kool277"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "qwertykool7@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "kool277"
+                          },
+                          {
+                            "k": "username",
+                            "v": "kool277"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "4a463931bf3d106f5b253d831235ee789ce292f0"
+                    },
+                    {
+                      "k": "message",
+                      "v": "docker local hosting"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2026-05-20T20:57:34+05:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "2900647c5f1bbb21a17b10247c2f88cc0881f89d"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/kool277/firts/commit/4a463931bf3d106f5b253d831235ee789ce292f0"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "qwertykool7@gmail.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "kool277"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/kool277/firts/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/kool277/firts/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/kool277/firts/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/kool277/firts/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/kool277/firts.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/kool277/firts/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/kool277/firts/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/kool277/firts/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/kool277/firts/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/kool277/firts/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/kool277/firts/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1779286735.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/kool277/firts/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": "demoDevOps"
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/kool277/firts/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/kool277/firts/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/kool277/firts/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "kool277/firts"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/kool277/firts/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/kool277/firts/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/kool277/firts/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/kool277/firts.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pull_requests",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/kool277/firts/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/kool277/firts"
+                    },
+                    {
+                      "k": "id",
+                      "v": 1244710507.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/kool277/firts/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/kool277/firts/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/kool277/firts/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/kool277/firts/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/kool277/firts/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "Python"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/kool277/firts/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/kool277/firts/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/kool277/firts/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "firts"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOSjDGaw"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/kool277/firts/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/214221688?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "qwertykool7@gmail.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/kool277/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/kool277/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/kool277/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/kool277/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/kool277"
+                          },
+                          {
+                            "k": "id",
+                            "v": 214221688.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "kool277"
+                          },
+                          {
+                            "k": "name",
+                            "v": "kool277"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "U_kgDODMTDeA"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/kool277/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/kool277/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/kool277/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/kool277/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/kool277/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/kool277"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pull_request_creation_policy",
+                      "v": "all"
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/kool277/firts/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1779292698.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/kool277/firts/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 14.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:kool277/firts.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/kool277/firts/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/kool277/firts/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/kool277/firts/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/kool277/firts/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/kool277/firts"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/kool277/firts/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/kool277/firts/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/kool277/firts/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2026-05-20T15:30:44Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/kool277/firts"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/214221688?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/kool277/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/kool277/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/kool277/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/kool277/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/kool277"
+                    },
+                    {
+                      "k": "id",
+                      "v": 214221688.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "kool277"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "U_kgDODMTDeA"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/kool277/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/kool277/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/kool277/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/kool277/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/kool277/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/kool277"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "kool277/firts/.github/workflows/ci.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "4a463931bf3d106f5b253d831235ee789ce292f0"
+        },
+        {
+          "k": "repository_id",
+          "v": "1244710507"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "kool277"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "job": {
+      "t": 2,
+      "d": [
+        {
+          "k": "check_run_id",
+          "v": 77000263437.0
+        },
+        {
+          "k": "workflow_ref",
+          "v": "kool277/firts/.github/workflows/ci.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "4a463931bf3d106f5b253d831235ee789ce292f0"
+        },
+        {
+          "k": "workflow_repository",
+          "v": "kool277/firts"
+        },
+        {
+          "k": "workflow_file_path",
+          "v": ".github/workflows/ci.yml"
+        }
+      ]
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2,
+      "d": [
+        {
+          "k": "docker",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "result",
+                "v": "success"
+              },
+              {
+                "k": "outputs",
+                "v": {
+                  "t": 2
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "actionsEnvironment": {
+    "name": "local-dev",
+    "url": null
+  },
+  "billingOwnerId": "U_kgDODMTDeA"
+}
+[2026-05-20 15:59:14Z INFO JobRunner] Job ID abfa5a40-40bb-5acd-8a1c-6c5e69a41707
+[2026-05-20 15:59:14Z INFO ConfigurationStore] currentAssemblyLocation: C:\docker-dii\firts\actions-runner\bin\Runner.Worker.dll
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO ConfigurationStore] binPath: C:\docker-dii\firts\actions-runner\bin
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO ConfigurationStore] RootFolder: C:\docker-dii\firts\actions-runner
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'Runner': 'C:\docker-dii\firts\actions-runner\.runner'
+[2026-05-20 15:59:14Z INFO ConfigurationStore] ConfigFilePath: C:\docker-dii\firts\actions-runner\.runner
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'MigratedRunner': 'C:\docker-dii\firts\actions-runner\.runner_migrated'
+[2026-05-20 15:59:14Z INFO ConfigurationStore] MigratedConfigFilePath: C:\docker-dii\firts\actions-runner\.runner_migrated
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'Credentials': 'C:\docker-dii\firts\actions-runner\.credentials'
+[2026-05-20 15:59:14Z INFO ConfigurationStore] CredFilePath: C:\docker-dii\firts\actions-runner\.credentials
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\docker-dii\firts\actions-runner\.credentials_migrated'
+[2026-05-20 15:59:14Z INFO ConfigurationStore] MigratedCredFilePath: C:\docker-dii\firts\actions-runner\.credentials_migrated
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'Service': 'C:\docker-dii\firts\actions-runner\.service'
+[2026-05-20 15:59:14Z INFO ConfigurationStore] ServiceConfigFilePath: C:\docker-dii\firts\actions-runner\.service
+[2026-05-20 15:59:14Z INFO ConfigurationStore] Read setting file: 392 chars
+[2026-05-20 15:59:14Z INFO JobRunner] Initializing launch client
+[2026-05-20 15:59:14Z INFO JobServerQueue] Initializing results client
+[2026-05-20 15:59:14Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2026-05-20 15:59:14Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2026-05-20 15:59:14Z INFO JobServerQueue] Start process web console line queue.
+[2026-05-20 15:59:14Z INFO JobServerQueue] Start process file upload queue.
+[2026-05-20 15:59:14Z INFO JobServerQueue] Start results file upload queue.
+[2026-05-20 15:59:14Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-05-20 15:59:14Z INFO JobServerQueue] Start process timeline update queue.
+[2026-05-20 15:59:14Z INFO ExecutionContext] Initializing Job context
+[2026-05-20 15:59:14Z INFO ExecutionContext] Initialize GitHub context
+[2026-05-20 15:59:14Z INFO ExecutionContext] Initialize Env context
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:14Z INFO JobRunner] Starting the job execution context.
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO JobRunner] Validating directory permissions for: 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Tools': 'C:\docker-dii\firts\actions-runner\_work\_tool'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:14Z INFO JobRunner] Getting job extension.
+[2026-05-20 15:59:14Z INFO JobRunner] Initialize job. Getting all job steps.
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'Credentials': 'C:\docker-dii\firts\actions-runner\.credentials'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known config file 'SetupInfo': 'C:\docker-dii\firts\actions-runner\.setup_info'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO PipelineDirectoryManager] Loading tracking config if exists: C:\docker-dii\firts\actions-runner\_work\_PipelineMapping\kool277/firts\PipelineFolder.json
+[2026-05-20 15:59:14Z INFO PipelineDirectoryManager] Creating a new tracking config file.
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO PipelineDirectoryManager] Creating pipeline directory.
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO PipelineDirectoryManager] Creating workspace directory.
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO JobExtension] Downloading actions
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:14Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:14Z INFO Worker] Listening for cancel message from the channel.
+[2026-05-20 15:59:14Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2026-05-20 15:59:15Z INFO ResultServer] Successfully started websocket client.
+[2026-05-20 15:59:15Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9714cab3-f536-4398-9bcf-b22a4ddc1146', success rate: 1/1.
+[2026-05-20 15:59:15Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:15Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:15Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:15Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:15Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:15Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:15Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:15Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:15Z INFO ActionManager] Save archive 'https://codeload.github.com/docker/login-action/zip/c94ce9fb468520275223c153574b00df6fe4bcc9' into C:\docker-dii\firts\actions-runner\_work\_actions\_temp_6a33e072-5504-421b-9bce-b7b42ad8d747\7b4b1a15-e315-411f-9ae2-e8b0723b537d.zip.
+[2026-05-20 15:59:15Z INFO ActionManager] Using Basic token for action archive download.
+[2026-05-20 15:59:15Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2026-05-20 15:59:15Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9714cab3-f536-4398-9bcf-b22a4ddc1146', success rate: 1/1.
+[2026-05-20 15:59:17Z INFO ActionManager] Request URL: https://codeload.github.com/docker/login-action/zip/c94ce9fb468520275223c153574b00df6fe4bcc9 X-GitHub-Request-Id: C798:2620CC:448349:4DDA1F:6A0DDA54 Http Status: OK
+[2026-05-20 15:59:17Z INFO ActionManager] Finished getting action repository.
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2026-05-20 15:59:17Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 22,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 27,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 29,
+          "col": 3,
+          "lit": "registry-auth"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-05-20 15:59:17Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:17Z INFO ActionManager] Load action that reference repository from 'C:\docker-dii\firts\actions-runner\_work\_actions\docker\login-action\v3'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 22,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 27,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 29,
+          "col": 3,
+          "lit": "registry-auth"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-05-20 15:59:17Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-05-20 15:59:17Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-05-20 15:59:17Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-05-20 15:59:17Z INFO JobExtension] Adding .
+[2026-05-20 15:59:17Z INFO JobExtension] Adding .
+[2026-05-20 15:59:17Z INFO JobExtension] Adding .
+[2026-05-20 15:59:17Z INFO JobExtension] Adding .
+[2026-05-20 15:59:17Z INFO JobExtension] Adding .
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO JobExtension] Total accessible running process: 250.
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO JobExtension] Start checking server connectivity.
+[2026-05-20 15:59:17Z INFO JobExtension] Check server connectivity for https://broker.actions.githubusercontent.com/health.
+[2026-05-20 15:59:17Z INFO JobExtension] Check server connectivity for https://token.actions.githubusercontent.com/ready.
+[2026-05-20 15:59:17Z INFO JobExtension] Check server connectivity for https://run.actions.githubusercontent.com/health.
+[2026-05-20 15:59:17Z INFO JobExtension] Start checking service connectivity in background.
+[2026-05-20 15:59:17Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "9714cab3-f536-4398-9bcf-b22a4ddc1146",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 3,
+  "startTime": "2026-05-20T15:59:14.6629695Z",
+  "finishTime": "2026-05-20T15:59:17.29235Z"
+}.
+[2026-05-20 15:59:17Z INFO JobRunner] Total job steps: 5.
+[2026-05-20 15:59:17Z INFO JobRunner] Run all job steps.
+[2026-05-20 15:59:17Z INFO DapDebugger] DapDebugger initialized
+[2026-05-20 15:59:17Z INFO StepsRunner] Processing step: DisplayName='Log in to Docker Hub'
+[2026-05-20 15:59:17Z INFO StepsRunner] Evaluating: success()
+[2026-05-20 15:59:17Z INFO StepsRunner] Result: true
+[2026-05-20 15:59:17Z INFO StepsRunner] Starting the step.
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO StepsRunner] Which2: 'chcp'
+[2026-05-20 15:59:17Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper] Process started with process id 21268, waiting for process exit.
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper] Finished process 21268 with exit code 0, and elapsed time 00:00:00.0111354.
+[2026-05-20 15:59:17Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:17Z INFO ActionManager] Load action that reference repository from 'C:\docker-dii\firts\actions-runner\_work\_actions\docker\login-action\v3'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 22,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 27,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 29,
+          "col": 3,
+          "lit": "registry-auth"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-05-20 15:59:17Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-05-20 15:59:17Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-05-20 15:59:17Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-05-20 15:59:17Z INFO ExecutionContext] Reserve record order 7 to 12 for post job actions.
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:17Z INFO ExecutionContext] Write event payload to C:\docker-dii\firts\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:17Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Input 'registry': default value evaluate result: ""
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Input 'ecr': default value evaluate result: ""
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Input 'scope': default value evaluate result: ""
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Input 'logout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 27,
+  "col": 14,
+  "lit": "true"
+}
+[2026-05-20 15:59:17Z INFO ActionManifestManagerLegacy] Input 'registry-auth': default value evaluate result: ""
+[2026-05-20 15:59:17Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command error
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command group
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-05-20 15:59:17Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:17Z INFO HostContext] Well known directory 'Externals': 'C:\docker-dii\firts\actions-runner\externals'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   File name: 'C:\docker-dii\firts\actions-runner\externals\node20\bin\node.exe'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Arguments: '"C:\docker-dii\firts\actions-runner\_work\_actions\docker\login-action\v3\dist/index.js"'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work\firts\firts'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:17Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9714cab3-f536-4398-9bcf-b22a4ddc1146', success rate: 1/1.
+[2026-05-20 15:59:17Z INFO JobServerQueue] Try to append 1 batches web console lines for record '53617ff6-31da-4eaf-8428-df7e950a1ddb', success rate: 1/1.
+[2026-05-20 15:59:17Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-05-20 15:59:17Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_9714cab3-f536-4398-9bcf-b22a4ddc1146.1
+[2026-05-20 15:59:17Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-05-20 15:59:17Z INFO ProcessInvokerWrapper] Process started with process id 12508, waiting for process exit.
+[2026-05-20 15:59:18Z INFO JobServerQueue] Try to append 1 batches web console lines for record '53617ff6-31da-4eaf-8428-df7e950a1ddb', success rate: 1/1.
+[2026-05-20 15:59:19Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Finished process 12508 with exit code 0, and elapsed time 00:00:02.7233878.
+[2026-05-20 15:59:20Z INFO CreateStepSummaryCommand] Step Summary file (C:\docker-dii\firts\actions-runner\_work\_temp\_runner_file_commands\step_summary_d76da117-42e9-48c7-bae8-bb0d20b10685) is empty; skipping attachment upload
+[2026-05-20 15:59:20Z INFO StepsRunner] Step result: 
+[2026-05-20 15:59:20Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "docker/login-action",
+  "ref": "v3",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "53617ff6-31da-4eaf-8428-df7e950a1ddb",
+  "stepContextName": "__docker_login-action",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 3,
+  "startTime": "2026-05-20T15:59:17.2994146Z",
+  "finishTime": "2026-05-20T15:59:20.0658955Z"
+}.
+[2026-05-20 15:59:20Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-05-20 15:59:20Z INFO StepsRunner] Current state: job state = ''
+[2026-05-20 15:59:20Z INFO StepsRunner] Processing step: DisplayName='Stop and remove existing container'
+[2026-05-20 15:59:20Z INFO StepsRunner] Evaluating: success()
+[2026-05-20 15:59:20Z INFO StepsRunner] Result: true
+[2026-05-20 15:59:20Z INFO StepsRunner] Starting the step.
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO StepsRunner] Which2: 'chcp'
+[2026-05-20 15:59:20Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Process started with process id 5864, waiting for process exit.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Finished process 5864 with exit code 0, and elapsed time 00:00:00.0043845.
+[2026-05-20 15:59:20Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:20Z INFO ExecutionContext] Write event payload to C:\docker-dii\firts\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:20Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-05-20 15:59:20Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command error
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command group
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-05-20 15:59:20Z INFO ScriptHandler] Which2: 'cmd'
+[2026-05-20 15:59:20Z INFO ScriptHandler] Location: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:20Z INFO ScriptHandler] Which2: 'cmd'
+[2026-05-20 15:59:20Z INFO ScriptHandler] Location: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Arguments: '/D /E:ON /V:OFF /S /C "CALL "C:\docker-dii\firts\actions-runner\_work\_temp\97a5bbee-4aa4-4e4d-b1e0-f403d486fb0e.cmd""'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work\firts\firts'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Process started with process id 6792, waiting for process exit.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Finished process 6792 with exit code 0, and elapsed time 00:00:00.0492601.
+[2026-05-20 15:59:20Z INFO CreateStepSummaryCommand] Step Summary file (C:\docker-dii\firts\actions-runner\_work\_temp\_runner_file_commands\step_summary_2ca0def7-cae5-4738-a0d4-a94aae72065f) is empty; skipping attachment upload
+[2026-05-20 15:59:20Z INFO StepsRunner] Step result: 
+[2026-05-20 15:59:20Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "cmd",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "d65db540-9c90-416f-b8ce-5c6e7ab6f6b1",
+  "stepContextName": "__run",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-05-20T15:59:20.0667413Z",
+  "finishTime": "2026-05-20T15:59:20.1290471Z"
+}.
+[2026-05-20 15:59:20Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-05-20 15:59:20Z INFO StepsRunner] Current state: job state = ''
+[2026-05-20 15:59:20Z INFO StepsRunner] Processing step: DisplayName='Pull image from Docker Hub'
+[2026-05-20 15:59:20Z INFO StepsRunner] Evaluating: success()
+[2026-05-20 15:59:20Z INFO StepsRunner] Result: true
+[2026-05-20 15:59:20Z INFO StepsRunner] Starting the step.
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO StepsRunner] Which2: 'chcp'
+[2026-05-20 15:59:20Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Process started with process id 19660, waiting for process exit.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Finished process 19660 with exit code 0, and elapsed time 00:00:00.0049768.
+[2026-05-20 15:59:20Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:20Z INFO ExecutionContext] Write event payload to C:\docker-dii\firts\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:20Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-05-20 15:59:20Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command error
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command group
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-05-20 15:59:20Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-05-20 15:59:20Z INFO ScriptHandler] Which2: 'cmd'
+[2026-05-20 15:59:20Z INFO ScriptHandler] Location: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:20Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:20Z INFO ScriptHandler] Which2: 'cmd'
+[2026-05-20 15:59:20Z INFO ScriptHandler] Location: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Arguments: '/D /E:ON /V:OFF /S /C "CALL "C:\docker-dii\firts\actions-runner\_work\_temp\86eacb91-40ff-40bb-b162-cd89c9920bbc.cmd""'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work\firts\firts'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:20Z INFO ProcessInvokerWrapper] Process started with process id 15668, waiting for process exit.
+[2026-05-20 15:59:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record '53617ff6-31da-4eaf-8428-df7e950a1ddb', success rate: 1/1.
+[2026-05-20 15:59:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'd65db540-9c90-416f-b8ce-5c6e7ab6f6b1', success rate: 1/1.
+[2026-05-20 15:59:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:20Z INFO JobServerQueue] Try to upload 2 log files or attachments, success rate: 2/2.
+[2026-05-20 15:59:20Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-05-20 15:59:20Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_53617ff6-31da-4eaf-8428-df7e950a1ddb.1
+[2026-05-20 15:59:21Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-05-20 15:59:21Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_d65db540-9c90-416f-b8ce-5c6e7ab6f6b1.1
+[2026-05-20 15:59:22Z INFO JobServerQueue] Tried to upload 2 file(s) to results, success rate: 2/2.
+[2026-05-20 15:59:22Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:23Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:27Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:27Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:27Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] Finished process 15668 with exit code 0, and elapsed time 00:00:12.7700458.
+[2026-05-20 15:59:32Z INFO CreateStepSummaryCommand] Step Summary file (C:\docker-dii\firts\actions-runner\_work\_temp\_runner_file_commands\step_summary_659c0905-4e39-4a4c-b5d6-0f7ee0f8fdf0) is empty; skipping attachment upload
+[2026-05-20 15:59:32Z INFO StepsRunner] Step result: 
+[2026-05-20 15:59:32Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "cmd",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c",
+  "stepContextName": "__run_2",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 13,
+  "startTime": "2026-05-20T15:59:20.1296379Z",
+  "finishTime": "2026-05-20T15:59:32.9105612Z"
+}.
+[2026-05-20 15:59:32Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-05-20 15:59:32Z INFO StepsRunner] Current state: job state = ''
+[2026-05-20 15:59:32Z INFO StepsRunner] Processing step: DisplayName='Run new container'
+[2026-05-20 15:59:32Z INFO StepsRunner] Evaluating: success()
+[2026-05-20 15:59:32Z INFO StepsRunner] Result: true
+[2026-05-20 15:59:32Z INFO StepsRunner] Starting the step.
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:32Z INFO StepsRunner] Which2: 'chcp'
+[2026-05-20 15:59:32Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] Process started with process id 4148, waiting for process exit.
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] Finished process 4148 with exit code 0, and elapsed time 00:00:00.0062360.
+[2026-05-20 15:59:32Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:32Z INFO ExecutionContext] Write event payload to C:\docker-dii\firts\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:32Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-05-20 15:59:32Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command error
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command group
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-05-20 15:59:32Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-05-20 15:59:32Z INFO ScriptHandler] Which2: 'cmd'
+[2026-05-20 15:59:32Z INFO ScriptHandler] Location: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:32Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:32Z INFO ScriptHandler] Which2: 'cmd'
+[2026-05-20 15:59:32Z INFO ScriptHandler] Location: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Arguments: '/D /E:ON /V:OFF /S /C "CALL "C:\docker-dii\firts\actions-runner\_work\_temp\1a6c88b3-b71f-42a4-b122-f22066006688.cmd""'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work\firts\firts'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:32Z INFO ProcessInvokerWrapper] Process started with process id 10200, waiting for process exit.
+[2026-05-20 15:59:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c', success rate: 1/1.
+[2026-05-20 15:59:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'cab34ad3-5296-477f-bb04-a8daeda103ca', success rate: 1/1.
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] Finished process 10200 with exit code 0, and elapsed time 00:00:00.3030520.
+[2026-05-20 15:59:33Z INFO CreateStepSummaryCommand] Step Summary file (C:\docker-dii\firts\actions-runner\_work\_temp\_runner_file_commands\step_summary_b3789cbc-8297-48a9-9c28-3fe19e9ceecb) is empty; skipping attachment upload
+[2026-05-20 15:59:33Z INFO StepsRunner] Step result: 
+[2026-05-20 15:59:33Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "cmd",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "cab34ad3-5296-477f-bb04-a8daeda103ca",
+  "stepContextName": "__run_3",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-05-20T15:59:32.9111338Z",
+  "finishTime": "2026-05-20T15:59:33.2262419Z"
+}.
+[2026-05-20 15:59:33Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-05-20 15:59:33Z INFO StepsRunner] Current state: job state = ''
+[2026-05-20 15:59:33Z INFO StepsRunner] Processing step: DisplayName='Health check'
+[2026-05-20 15:59:33Z INFO StepsRunner] Evaluating: success()
+[2026-05-20 15:59:33Z INFO StepsRunner] Result: true
+[2026-05-20 15:59:33Z INFO StepsRunner] Starting the step.
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:33Z INFO StepsRunner] Which2: 'chcp'
+[2026-05-20 15:59:33Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] Process started with process id 22164, waiting for process exit.
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] Finished process 22164 with exit code 0, and elapsed time 00:00:00.0055282.
+[2026-05-20 15:59:33Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:33Z INFO ExecutionContext] Write event payload to C:\docker-dii\firts\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:33Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-05-20 15:59:33Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command error
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command group
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-05-20 15:59:33Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-05-20 15:59:33Z INFO ScriptHandler] Which2: 'cmd'
+[2026-05-20 15:59:33Z INFO ScriptHandler] Location: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:33Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:33Z INFO ScriptHandler] Which2: 'cmd'
+[2026-05-20 15:59:33Z INFO ScriptHandler] Location: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\cmd.EXE'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Arguments: '/D /E:ON /V:OFF /S /C "CALL "C:\docker-dii\firts\actions-runner\_work\_temp\d79ca556-1a58-438a-9737-4ab83a1703c3.cmd""'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work\firts\firts'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:33Z INFO ProcessInvokerWrapper] Process started with process id 17268, waiting for process exit.
+[2026-05-20 15:59:33Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-05-20 15:59:33Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_c67f3c36-b6e9-4a96-80a7-8e32b3eb8d8c.1
+[2026-05-20 15:59:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record '827aa6bf-f36f-4304-96a3-672daaec97b8', success rate: 1/1.
+[2026-05-20 15:59:33Z INFO JobServerQueue] Try to upload 2 log files or attachments, success rate: 2/2.
+[2026-05-20 15:59:34Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-05-20 15:59:34Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_cab34ad3-5296-477f-bb04-a8daeda103ca.1
+[2026-05-20 15:59:34Z INFO JobServerQueue] Tried to upload 2 file(s) to results, success rate: 2/2.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] Finished process 17268 with exit code 0, and elapsed time 00:00:03.0716486.
+[2026-05-20 15:59:36Z INFO CreateStepSummaryCommand] Step Summary file (C:\docker-dii\firts\actions-runner\_work\_temp\_runner_file_commands\step_summary_aacffdf9-f7a1-4777-ab4f-5fd7d74de3a9) is empty; skipping attachment upload
+[2026-05-20 15:59:36Z INFO StepsRunner] Step result: 
+[2026-05-20 15:59:36Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "cmd",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "827aa6bf-f36f-4304-96a3-672daaec97b8",
+  "stepContextName": "__run_4",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 4,
+  "startTime": "2026-05-20T15:59:33.2268417Z",
+  "finishTime": "2026-05-20T15:59:36.3153137Z"
+}.
+[2026-05-20 15:59:36Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-05-20 15:59:36Z INFO StepsRunner] Current state: job state = ''
+[2026-05-20 15:59:36Z INFO StepsRunner] Processing step: DisplayName='Post Log in to Docker Hub'
+[2026-05-20 15:59:36Z INFO StepsRunner] Evaluating: always()
+[2026-05-20 15:59:36Z INFO StepsRunner] Result: true
+[2026-05-20 15:59:36Z INFO StepsRunner] Starting the step.
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:36Z INFO StepsRunner] Which2: 'chcp'
+[2026-05-20 15:59:36Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] Process started with process id 20636, waiting for process exit.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] Finished process 20636 with exit code 0, and elapsed time 00:00:00.0048767.
+[2026-05-20 15:59:36Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:36Z INFO ActionManager] Load action that reference repository from 'C:\docker-dii\firts\actions-runner\_work\_actions\docker\login-action\v3'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Actions': 'C:\docker-dii\firts\actions-runner\_work\_actions'
+[2026-05-20 15:59:36Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-05-20 15:59:36Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-05-20 15:59:36Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 22,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 27,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 29,
+          "col": 3,
+          "lit": "registry-auth"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-05-20 15:59:36Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-05-20 15:59:36Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-05-20 15:59:36Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:36Z INFO ExecutionContext] Write event payload to C:\docker-dii\firts\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Work': 'C:\docker-dii\firts\actions-runner\_work'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Temp': 'C:\docker-dii\firts\actions-runner\_work\_temp'
+[2026-05-20 15:59:36Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-05-20 15:59:36Z INFO ActionManifestManagerLegacy] Input 'registry': default value evaluate result: ""
+[2026-05-20 15:59:36Z INFO ActionManifestManagerLegacy] Input 'ecr': default value evaluate result: ""
+[2026-05-20 15:59:36Z INFO ActionManifestManagerLegacy] Input 'scope': default value evaluate result: ""
+[2026-05-20 15:59:36Z INFO ActionManifestManagerLegacy] Input 'logout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 27,
+  "col": 14,
+  "lit": "true"
+}
+[2026-05-20 15:59:36Z INFO ActionManifestManagerLegacy] Input 'registry-auth': default value evaluate result: ""
+[2026-05-20 15:59:36Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command error
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command group
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-05-20 15:59:36Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Externals': 'C:\docker-dii\firts\actions-runner\externals'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] Starting process:
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   File name: 'C:\docker-dii\firts\actions-runner\externals\node20\bin\node.exe'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Arguments: '"C:\docker-dii\firts\actions-runner\_work\_actions\docker\login-action\v3\dist/index.js"'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Working directory: 'C:\docker-dii\firts\actions-runner\_work\firts\firts'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] Process started with process id 17600, waiting for process exit.
+[2026-05-20 15:59:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record '827aa6bf-f36f-4304-96a3-672daaec97b8', success rate: 1/1.
+[2026-05-20 15:59:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record '1925c6a8-2bd6-4f90-ba1a-fe8c4041f6d4', success rate: 1/1.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-05-20 15:59:36Z INFO ProcessInvokerWrapper] Finished process 17600 with exit code 0, and elapsed time 00:00:00.3596706.
+[2026-05-20 15:59:36Z INFO CreateStepSummaryCommand] Step Summary file (C:\docker-dii\firts\actions-runner\_work\_temp\_runner_file_commands\step_summary_023f3f90-9ce4-4b2f-adb4-bd032a2f3bc1) is empty; skipping attachment upload
+[2026-05-20 15:59:36Z INFO StepsRunner] Step result: 
+[2026-05-20 15:59:36Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "docker/login-action",
+  "ref": "v3",
+  "type": "node20",
+  "stage": "Post",
+  "stepId": "1925c6a8-2bd6-4f90-ba1a-fe8c4041f6d4",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-05-20T15:59:36.3158673Z",
+  "finishTime": "2026-05-20T15:59:36.6863611Z"
+}.
+[2026-05-20 15:59:36Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-05-20 15:59:36Z INFO StepsRunner] Current state: job state = ''
+[2026-05-20 15:59:36Z INFO JobRunner] Finalize job.
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:36Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:36Z INFO JobExtension] Initialize Env context
+[2026-05-20 15:59:36Z INFO JobExtension] Initialize steps context
+[2026-05-20 15:59:36Z INFO JobExtension] Total accessible running process: 250.
+[2026-05-20 15:59:36Z INFO JobExtension] Wait for all connectivity checks to finish.
+[2026-05-20 15:59:36Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-05-20 15:59:36Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-05-20 15:59:36Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-05-20 15:59:36Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "6451e3b2-a000-4d32-8708-06de31f418de",
+  "result": "succeeded",
+  "errorMessages": [
+    "Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: docker/login-action@v3. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the r"
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-05-20T15:59:36.6897918Z",
+  "finishTime": "2026-05-20T15:59:36.6959965Z"
+}.
+[2026-05-20 15:59:36Z INFO JobRunner] Job result after all job steps finish: Succeeded
+[2026-05-20 15:59:36Z INFO JobRunner] Completing the job execution context.
+[2026-05-20 15:59:36Z INFO JobRunner] Shutting down the job server queue.
+[2026-05-20 15:59:36Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2026-05-20 15:59:37Z INFO JobServerQueue] All queue process task stopped.
+[2026-05-20 15:59:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '1925c6a8-2bd6-4f90-ba1a-fe8c4041f6d4', success rate: 1/1.
+[2026-05-20 15:59:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6451e3b2-a000-4d32-8708-06de31f418de', success rate: 1/1.
+[2026-05-20 15:59:37Z INFO JobServerQueue] Web console line queue drained.
+[2026-05-20 15:59:37Z INFO JobServerQueue] Uploading 4 files in one shot.
+[2026-05-20 15:59:37Z INFO JobServerQueue] Try to upload 4 log files or attachments, success rate: 4/4.
+[2026-05-20 15:59:37Z INFO JobServerQueue] File upload queue drained.
+[2026-05-20 15:59:37Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-05-20 15:59:37Z INFO JobServerQueue] Uploading 4 file(s) in one shot through results service.
+[2026-05-20 15:59:37Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-05-20 15:59:37Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_827aa6bf-f36f-4304-96a3-672daaec97b8.1
+[2026-05-20 15:59:38Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-05-20 15:59:38Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_1925c6a8-2bd6-4f90-ba1a-fe8c4041f6d4.1
+[2026-05-20 15:59:38Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-05-20 15:59:38Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_6451e3b2-a000-4d32-8708-06de31f418de.1
+[2026-05-20 15:59:39Z INFO JobServerQueue] Got a job log file to send to results service.
+[2026-05-20 15:59:39Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, C:\docker-dii\firts\actions-runner\_diag\blocks\9e298cae-2863-4449-8922-8477f9f0c1b4_abfa5a40-40bb-5acd-8a1c-6c5e69a41707.1
+[2026-05-20 15:59:39Z INFO JobServerQueue] Tried to upload 4 file(s) to results, success rate: 4/4.
+[2026-05-20 15:59:39Z INFO JobServerQueue] Results upload queue drained.
+[2026-05-20 15:59:40Z INFO JobServerQueue] Timeline update queue drained.
+[2026-05-20 15:59:40Z INFO JobServerQueue] Disposing job server ...
+[2026-05-20 15:59:40Z INFO JobServerQueue] Disposing results server ...
+[2026-05-20 15:59:40Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2026-05-20 15:59:40Z INFO TempDirectoryManager] Cleaning runner temp folder: C:\docker-dii\firts\actions-runner\_work\_temp
+[2026-05-20 15:59:40Z INFO HostContext] Well known directory 'Bin': 'C:\docker-dii\firts\actions-runner\bin'
+[2026-05-20 15:59:40Z INFO HostContext] Well known directory 'Root': 'C:\docker-dii\firts\actions-runner'
+[2026-05-20 15:59:40Z INFO HostContext] Well known directory 'Diag': 'C:\docker-dii\firts\actions-runner\_diag'
+[2026-05-20 15:59:40Z INFO HostContext] Well known config file 'Telemetry': 'C:\docker-dii\firts\actions-runner\_diag\.telemetry'
+[2026-05-20 15:59:40Z INFO JobRunner] Raising job completed against run service
+[2026-05-20 15:59:40Z INFO Worker] Job completed.
